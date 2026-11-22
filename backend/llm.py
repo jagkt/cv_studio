@@ -11,6 +11,7 @@ MODEL_NAME = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
 
 llm = ChatGroq(
     model_name=MODEL_NAME,
-    max_tokens=900,
+    max_tokens=4096,
     temperature=0.3,
+    reasoning_effort="low",
 )

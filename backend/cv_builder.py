@@ -1,6 +1,8 @@
 from langchain_core.prompts import PromptTemplate
 from backend.llm import llm
-from backend.templates import CV_TEMPLATES
+# from backend.templates import CV_TEMPLATES
+from backend.storage import get_active_cv_templates
+
 
 
 def rewrite_resume(
@@ -60,7 +62,10 @@ def build_new_cv_from_history(
     target_role: str = "",
 ) -> str:
     """Extracts ONLY the relevant experience from full career history to build a brand-new CV matching the selected template."""
-    template_cfg = CV_TEMPLATES.get(job_type, CV_TEMPLATES["Enterprise / Industry"])
+    # template_cfg = CV_TEMPLATES.get(job_type, CV_TEMPLATES["Enterprise / Industry"])
+    cv_templates = get_active_cv_templates()
+    template_cfg = cv_templates.get(job_type, cv_templates["Enterprise / Industry"])
+
 
     template = """
     You are a senior career architect and CV writer specializing in **{job_type}** applications.

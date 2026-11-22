@@ -1,6 +1,7 @@
 from langchain_core.prompts import PromptTemplate
 from backend.llm import llm
-from backend.templates import LETTER_TEMPLATES
+# from backend.templates import LETTER_TEMPLATES
+from backend.storage import get_active_letter_templates
 
 
 def generate_tailored_document(
@@ -10,8 +11,9 @@ def generate_tailored_document(
     extra_instructions: str = "",
 ) -> str:
     """Generates a tailored Cover Letter, SOP, Motivation Letter, or Research Statement using predefined templates."""
-    doc_cfg = LETTER_TEMPLATES[doc_type] 
-    
+    # doc_cfg = LETTER_TEMPLATES[doc_type] 
+    doc_cfg = get_active_letter_templates()[doc_type]
+
     template = """
     You are an elite academic and executive communications writer.
     Write a compelling, personalized **{doc_type}** addressed to **{audience}** based strictly on the candidate's real background and the target description.
