@@ -24,7 +24,7 @@ It analyzes CVs against target Job Descriptions or Academic Calls, rewrites exis
 ## Project Structure
 
 ```text
-resume_analyzer/
+cv_studio/
 ├── app.py                        # Streamlit application entry point
 ├── requirements.txt              # Python dependencies
 ├── .env                          # Environment variables (GROQ_API_KEY, GROQ_MODEL)

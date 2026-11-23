@@ -6,13 +6,15 @@ from backend.storage import get_active_cv_templates
 
 
 def rewrite_resume(
-    full_name: str,
+    full_resume: str,
     job_description: str,
     job_type: str = "Enterprise / Industry",
     analysis_feedback: str = "",
 ) -> str:
     """Rewrites an existing resume/CV using the predefined Enterprise or Academic template."""
-    template_cfg = CV_TEMPLATES.get(job_type, CV_TEMPLATES["Enterprise / Industry"])
+    # template_cfg = CV_TEMPLATES.get(job_type, CV_TEMPLATES["Enterprise / Industry"])
+    cv_templates = get_active_cv_templates()
+    template_cfg = cv_templates.get(job_type, cv_templates["Enterprise / Industry"])
     
     template = """
     You are an executive resume and academic CV writer.

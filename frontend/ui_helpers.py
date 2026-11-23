@@ -39,7 +39,7 @@ def inject_modern_css():
 def render_download_bar(markdown_content: str, base_filename: str, key_prefix:str):
     """Renders aligned Word (.docx) and Markdown (.md) download buttons."""
     docx_bytes = generate_docx_bytes(markdown_content)
-    col1, col2 = st.column(2)
+    col1, col2 = st.columns(2)
     
     with col1:
         st.download_button(
